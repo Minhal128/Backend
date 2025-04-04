@@ -39,6 +39,7 @@ exports.authenticate = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+<<<<<<< HEAD
 };
 exports.authorize = (role) => {
   return (req, res, next) => {
@@ -50,4 +51,6 @@ exports.authorize = (role) => {
     }
     next();
   };
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
 };

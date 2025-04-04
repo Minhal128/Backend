@@ -1,5 +1,9 @@
 // Add these new methods to the existing auth.controller.js
+<<<<<<< HEAD
 const jwt = require('jsonwebtoken');
+=======
+
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
 const User = require('../models/User');
 const OTP = require('../models/OTP');
 const Device = require('../models/Device');
@@ -316,6 +320,7 @@ exports.verifyOTP = async (req, res, next) => {
 };
 
 // Make sure to export register and login functions if they're defined earlier
+<<<<<<< HEAD
 exports.register = async (req, res, next) => {
   try {
     const { firstName, lastName, email, DOB, gender } = req.body;
@@ -488,3 +493,12 @@ exports.completeRegistration = async (req, res, next) => {
     next(error);
   }
 };
+=======
+exports.register = exports.register || (async (req, res, next) => {
+  // Define if not already defined
+});
+
+exports.login = exports.login || (async (req, res, next) => {
+  // Define if not already defined
+});
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12

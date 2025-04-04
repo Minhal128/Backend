@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+<<<<<<< HEAD
 // Track connection status
 let isConnected = false;
 let connectionAttempts = 0;
@@ -89,3 +90,13 @@ mongoose.connection.on('error', (err) => {
     process.exit(1);
   }
 });
+=======
+exports.connectDB = async () => {
+  const connection = await mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  
+  return connection;
+};
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12

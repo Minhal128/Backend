@@ -5,7 +5,10 @@ const {
   verifyOTP, 
   requestPasswordReset, 
   resetPassword, 
+<<<<<<< HEAD
   completeRegistration,
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
   changeDevice,
   requestPhoneLogin,
   verifyPhoneLogin,
@@ -14,7 +17,11 @@ const {
 const { authenticate } = require('../middleware/auth.middleware');
 
 const router = express.Router();
+<<<<<<< HEAD
 router.post('/complete-registration', completeRegistration);
+=======
+
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
 router.post('/verify-otp', verifyOTP);
 router.post('/register', register);
 router.post('/login', login);

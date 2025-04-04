@@ -10,5 +10,8 @@ uploads/*
 !uploads/.gitkeep
 .qodo
 .env.env
+<<<<<<< HEAD
 .vercel
 .env
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12

@@ -4,10 +4,16 @@ const kycService = require('../services/kyc.service');
 
 exports.submitKYC = async (req, res, next) => {
   try {
+<<<<<<< HEAD
     const { idType, idNumber, idExpiryDate, dateOfBirth } = req.body;
     const userId = req.user.id;
 
     // Validate required files
+=======
+    const { idType, idNumber, idExpiryDate, dateOfBirth, address } = req.body;
+    const userId = req.user.id;
+
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
     if (!req.files || !req.files.frontIdImage || !req.files.backIdImage || !req.files.selfieImage) {
       return res.status(400).json({
         success: false,
@@ -15,6 +21,7 @@ exports.submitKYC = async (req, res, next) => {
       });
     }
 
+<<<<<<< HEAD
     // Handle address properly - could be string or object
     let parsedAddress;
     try {
@@ -40,25 +47,35 @@ exports.submitKYC = async (req, res, next) => {
     }
 
     // Check for existing KYC and remove if found
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
     const existingKYC = await KYC.findOne({ userId });
     if (existingKYC) {
       await KYC.findByIdAndDelete(existingKYC._id);
     }
 
+<<<<<<< HEAD
     // Create KYC data with properly parsed address
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
     const kycData = {
       userId,
       idType,
       idNumber,
       idExpiryDate: new Date(idExpiryDate),
       dateOfBirth: new Date(dateOfBirth),
+<<<<<<< HEAD
       address: parsedAddress,
+=======
+      address: JSON.parse(address),
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
       frontIdImage: req.files.frontIdImage[0].path,
       backIdImage: req.files.backIdImage[0].path,
       selfieImage: req.files.selfieImage[0].path,
       status: 'PENDING'
     };
 
+<<<<<<< HEAD
     // Create KYC record
     await KYC.create(kycData);
     
@@ -66,12 +83,21 @@ exports.submitKYC = async (req, res, next) => {
     await User.findByIdAndUpdate(userId, { isKYCVerified: false, isKYCSubmitted: true });
 
     // Return success response
+=======
+    await KYC.create(kycData);
+
+    await kycService.processKYC(userId);
+
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
     res.status(201).json({
       success: true,
       message: 'KYC submitted successfully and is under review'
     });
   } catch (error) {
+<<<<<<< HEAD
     console.error('KYC submission error:', error);
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
     next(error);
   }
 };
@@ -100,6 +126,7 @@ exports.getKYCStatus = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+<<<<<<< HEAD
 };
 exports.reviewKYC = async (req, res, next) => {
   try {
@@ -122,4 +149,6 @@ exports.reviewKYC = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+=======
+>>>>>>> a350889d6733f71c4c47a9c38140f3906a9dbc12
 };
